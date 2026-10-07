@@ -1,0 +1,25 @@
+RUS INTEGRAL — ESTUDIO Y DISEÑO, REVISIÓN 2
+
+1. Lee Estudio_y_diseno_RUS_Integral.md para el análisis técnico, los flujos,
+   los criterios de aceptación y las funcionalidades adicionales propuestas.
+2. Abre Maqueta_RUS_Integral.html con un navegador para recorrer el diseño.
+   No necesita instalación ni conexión. Usa exclusivamente datos ficticios.
+   Prueba el perfil Meta 4 (68 combinaciones), retira cruces en el modo
+   específico y edita FECHA OBS. para ver cómo llega a la vista del informe.
+3. La carpeta capturas/ muestra inicio, conexión, cobertura y vista previa Meta 4.
+4. Validacion_del_estudio.md documenta las comprobaciones realizadas.
+5. Anexo_integracion_Descargador_SITFA.md concreta la integración de descarga.
+6. Fuente_Descargador_SITFA_2_6_0_V4.md conserva el documento aportado.
+
+Esta entrega es un estudio y diseño, no la aplicación integrada en producción.
+No descarga RUS, no importa Excel real y no crea documentos oficiales.
+La maqueta puede guardar únicamente un resumen TXT de sus datos de ejemplo.
+
+Pendientes para completar la integración y la apariencia solicitada:
+- Verificar contratos del descargador con módulos fuente disponibles o
+  con su distribución local. Su arquitectura ya está documentada; no es
+  necesario subir el ejecutable completo para continuar el diseño.
+- Referencia visual de CSMP Integral (solo se usará su apariencia).
+- Plantilla institucional Meta 4 y reportes de ejemplo anonimizados.
+
+Los paquetes originales no se han modificado.

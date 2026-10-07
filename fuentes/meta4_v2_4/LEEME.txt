@@ -1,0 +1,118 @@
+GENERADOR AUTOMATIZADO META 4 - version 2.4
+===========================================
+
+ALCANCE
+-------
+
+Esta herramienta cubre SOLO las modalidades FAE y Residencia. Las filas con otra
+derivacion (OPD, DAM, ambulatorios, etc.) no se incorporan a Registros ni a
+META 4: quedan informadas como "fuera de alcance" en el reporte, con archivo y
+cantidad.
+
+PRODUCTOS GENERADOS
+-------------------
+
+1. Registros.xlsx
+2. META 4 - actualizado AAAA-MM.xlsx
+3. Reporte de procesamiento META 4 - AAAA-MM-DD_HHMMSS.txt
+
+FORMA MÁS SIMPLE DE USO
+-----------------------
+
+1. Descomprime esta carpeta completa, en cualquier ubicación.
+2. Abre "Generar META 4.bat" con doble clic.
+3. Elige la carpeta con los informes en la ventana que aparece.
+4. Espera a que finalice el proceso. Al terminar se abre la carpeta de salida.
+
+También puedes arrastrar la carpeta de informes sobre "Generar META 4.bat": en
+ese caso no aparece la ventana de selección.
+
+Para regenerar un mes anterior, usa "Generar META 4 (otro mes).bat": pide el mes
+en formato AAAA-MM y luego la carpeta. Si el mes no es valido, lo dice y no
+continua.
+
+IMPORTANTE: el BAT no funciona si se copia por separado. Necesita la carpeta
+scripts al lado. Si eso ocurre, el programa lo dice y no intenta ejecutarse.
+
+QUÉ EXAMINA
+-----------
+
+- Todas las subcarpetas.
+- Excel .xls, .xlsx y .xlsm.
+- PDF e imágenes .png, .jpg, .jpeg, .tif, .tiff, .bmp, .gif y .webp.
+
+Los PDF y las imágenes se clasifican exclusivamente por su nombre y ruta. No se
+lee su contenido y se consideran combinaciones con cero registros.
+
+REGLAS PRINCIPALES
+------------------
+
+- Tribunal: contenido de A1 y columna TRIBUNAL. El contenido prevalece sobre el
+  nombre del archivo. En rutas se evalua primero el nombre del archivo y luego
+  las carpetas hacia arriba. La abreviatura LA (Los Angeles) solo se acepta si
+  el contexto descarta el articulo "la": no se acepta tras DE, DEL, EN, POR,
+  etc., ni delante de una palabra ajena al dominio. Si queda ambigua, el archivo
+  se marca NO CLASIFICADO con una advertencia que indica renombrarlo.
+- Modalidad: columna DERIVACIÓN. FAE comienza con FAE; Residencia comienza con R
+  o CREAD.
+- Estado: título de A2, contrastado con T ESPERA o FEC. INGRESO EFECTIVO.
+- Encabezados: se busca automáticamente la fila que contiene RIT.
+- Duplicados: un Excel siempre prevalece sobre un PDF o imagen (su contenido si
+  fue leido), para no perder registros reales. Si el PDF o imagen omitido es
+  MAS RECIENTE que el Excel elegido, la combinacion queda marcada REQUIERE
+  REVISION en la matriz de cobertura y en el reporte, mostrando ambos archivos:
+  confirma manualmente que el Excel corresponde al periodo vigente.
+- Faltantes y errores: no detienen la generación. Quedan señalados en el Excel y
+  en el reporte TXT.
+
+REEJECUCIÓN
+-----------
+
+El programa ignora Registros.xlsx, los META 4 anteriores, los reportes TXT
+anteriores y los temporales de Excel. Por eso puede ejecutarse nuevamente sobre
+la misma carpeta.
+
+DEPENDENCIAS
+------------
+
+Requiere Python 3 con pandas, openpyxl y xlrd. Si faltan, ejecuta
+"Instalar dependencias.bat". La dependencia holidays mejora el calendario de
+feriados chilenos; si no está instalada, se usa el calendario integrado y las
+fechas de assets\feriados_adicionales.txt.
+
+FERIADOS EXTRAORDINARIOS
+------------------------
+
+Para incorporar una fecha extraordinaria, abre:
+
+assets\feriados_adicionales.txt
+
+Agrega una fecha por línea en formato AAAA-MM-DD.
+
+
+PRUEBAS
+-------
+
+El paquete incluye una suite automatizada. Con pytest instalado:
+
+    python -m pytest tests -q
+
+Usa solo datos ficticios generados en carpetas temporales. Nunca ejecutes las
+pruebas sobre informes reales.
+
+LINEA DE COMANDOS
+-----------------
+
+    python scripts\generate_meta4.py --folder "C:\Ruta\Informes"
+    python scripts\generate_meta4.py --pick-folder
+    python scripts\generate_meta4.py --folder "C:\Ruta" --month 2026-07
+    python scripts\generate_meta4.py --folder "C:\Ruta" --emission-date 03-08-2026
+
+Codigos de salida:
+  0 = correcto
+  1 = error (carpeta inexistente, sin Python, sin selector disponible)
+  2 = argumento invalido (--month o --emission-date con formato incorrecto)
+  3 = cancelado por el usuario en la ventana de seleccion
+
+Ninguno de estos casos muestra un traceback de Python; el mensaje va a la
+consola de error (stderr) en una sola linea.

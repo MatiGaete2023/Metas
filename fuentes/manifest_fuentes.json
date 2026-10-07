@@ -1,0 +1,73 @@
+{
+  "descripcion": "Copias sin modificaciones de las fuentes aportadas; cachés excluidos.",
+  "archivos": [
+    {
+      "ruta": "fuentes/consolidador_excel/Consolidar archivos Excel.bat",
+      "sha256": "e1fc975845c007752d1dd3ebcf11ba0f4ee45f5ff51d41d29fa0e51348b5fec2"
+    },
+    {
+      "ruta": "fuentes/consolidador_excel/Instalar dependencias.bat",
+      "sha256": "495f3d750bd2885da5ba7e84b46e369e1e885f12a58e42a65ec06cd1df1a6b25"
+    },
+    {
+      "ruta": "fuentes/consolidador_excel/LEEME.txt",
+      "sha256": "0760ff2d0f7ca2f5d5383594ab358a4f1a22a9043bd5fe2d9f9c6d30c3794a1d"
+    },
+    {
+      "ruta": "fuentes/consolidador_excel/consolidar_excels.py",
+      "sha256": "90233ddc0c9cd31edafa4780fc9d9a8128d0650751ff0c522174ddea2c024fe0"
+    },
+    {
+      "ruta": "fuentes/consolidador_excel/requirements.txt",
+      "sha256": "1b6afc75312ee72592f707eba55ea6e1e44a24bc78b37c1e1580cc43fa818a1c"
+    },
+    {
+      "ruta": "fuentes/consolidador_excel/selector_carpeta.py",
+      "sha256": "f516a8db439fb894a600a7d44d5c2357d2154d866832faf7c3ee821f4cce5464"
+    },
+    {
+      "ruta": "fuentes/meta4_v2_4/CAMBIOS.txt",
+      "sha256": "2c15c72c2202bcd15199fb4bcc9f0be2d09e3aad9c2fb689bf0a93a6343895b8"
+    },
+    {
+      "ruta": "fuentes/meta4_v2_4/Generar META 4 (otro mes).bat",
+      "sha256": "5db3cf825ede11a6ebe57257d3a7a9cb160df0dcf351480a2ba7746628332e38"
+    },
+    {
+      "ruta": "fuentes/meta4_v2_4/Generar META 4.bat",
+      "sha256": "47b843e11d434ec6936a5703bf99acd933921ee754a466dbaead14761cd29529"
+    },
+    {
+      "ruta": "fuentes/meta4_v2_4/Instalar dependencias.bat",
+      "sha256": "45d3ea697ae80b757beae55e679ecd8ba3dde52a204c675e2f5fc17ccbbc748e"
+    },
+    {
+      "ruta": "fuentes/meta4_v2_4/LEEME.txt",
+      "sha256": "f92c850db256c361a25d6a349fa4fa3203cac145406e9f898b129dcaa57aa745"
+    },
+    {
+      "ruta": "fuentes/meta4_v2_4/assets/feriados_adicionales.txt",
+      "sha256": "544aeffb2403966128fd976ff51e8a852513d974aea86d680179a2d5d77be3df"
+    },
+    {
+      "ruta": "fuentes/meta4_v2_4/requirements-dev.txt",
+      "sha256": "bbb35ec240e2da8f9ead81b15ad3f5d2ac099c97a2a2bea09b70f5174846995f"
+    },
+    {
+      "ruta": "fuentes/meta4_v2_4/requirements.txt",
+      "sha256": "812f467768dcf611c341fa95130ff306dc82cc74369185646da6c122dead810a"
+    },
+    {
+      "ruta": "fuentes/meta4_v2_4/scripts/_entorno.bat",
+      "sha256": "a38b0eec691250cd19d6a6ab3d9b04057055fb8631554af82320b6bd298bde54"
+    },
+    {
+      "ruta": "fuentes/meta4_v2_4/scripts/generate_meta4.py",
+      "sha256": "9895302d52615a02da13df325d5b2604fcfee9eef083bcd07bb71b001f6a88ea"
+    },
+    {
+      "ruta": "fuentes/meta4_v2_4/tests/test_generate_meta4.py",
+      "sha256": "78a95fa845d86381e21838d539798e803d20ab68eb6bcb894a3f346caf9209fc"
+    }
+  ]
+}

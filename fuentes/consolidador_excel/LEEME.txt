@@ -1,0 +1,46 @@
+CONSOLIDADOR DE EXCEL: ESPERA Y CUMPLIMIENTO
+Versión 1.2
+
+OBJETIVO
+Busca todos los archivos .xls, .xlsx y .xlsm de una carpeta y sus
+subcarpetas. Lee su contenido, identifica si cada reporte corresponde a
+Espera o Cumplimiento y copia sus registros en un nuevo Excel.
+
+RESULTADO
+El archivo creado se llama "Registros consolidados.xlsx" y queda dentro de
+la carpeta seleccionada. Contiene, en este orden:
+
+1. Hoja "Espera".
+2. Hoja "Cumplimiento".
+3. Hoja "Duplicados".
+
+La hoja "Duplicados" incluye todas las apariciones de las personas que se
+repiten por RUT y nombre. La columna "UBICACIÓN" indica si cada registro está
+en Espera o Cumplimiento. La comparación ignora mayúsculas, tildes, espacios,
+signos y diferencias de formato del RUT. No se consideran duplicados los
+registros que no tengan RUT o nombre.
+
+Si ya existe un consolidado, crea otro numerado y no sobrescribe el anterior.
+
+USO
+1. Instala Python 3.10 o superior, si aún no está instalado.
+2. Ejecuta una vez "Instalar dependencias.bat".
+3. Ejecuta "Consolidar archivos Excel.bat".
+4. Abre la carpeta que contiene los archivos. La ventana muestra las
+   subcarpetas y los Excel para comprobar su contenido.
+5. Pulsa "Usar esta carpeta".
+
+REGLAS
+- La búsqueda incluye todas las subcarpetas.
+- La clasificación se hace por el título y los encabezados del Excel, no por
+  el nombre del archivo.
+- Se copian las filas que tengan un valor en la columna RIT.
+- No se distingue entre FAE y Residencia.
+- Se copian valores, no fórmulas externas.
+- Las carpetas creadas por el etiquetador anterior se excluyen para impedir
+  que los mismos registros se copien dos veces.
+- Los archivos de consolidación anteriores también se excluyen.
+- Los archivos originales no se modifican.
+- Si un Excel no puede leerse, no tiene los encabezados exigidos o contiene
+  datos contradictorios, no se genera un consolidado parcial. El programa
+  informa qué archivo requiere revisión.

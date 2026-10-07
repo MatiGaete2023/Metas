@@ -1,0 +1,63 @@
+CAMBIOS DE LA VERSION 2.4
+=========================
+
+Etapas 2 y 3 del plan de correccion sobre la auditoria externa sobre v2.2
+(ver Evaluacion_auditoria_externa_y_plan.md). La v2.3 ya habia resuelto
+H-01, H-02, H-03 y M-02 (bloqueantes). Esta version resuelve el resto.
+
+ETAPA 2 - ROBUSTEZ DE CLASIFICACION Y USO
+------------------------------------------
+
+1. (M-01) Estado (Espera/Cumplimiento) y modalidad (FAE/Residencia) ahora se
+   evaluan primero por el nombre del archivo y luego por las carpetas hacia
+   arriba, igual que el tribunal. Antes se evaluaba toda la ruta como un solo
+   texto: una carpeta padre con la señal contraria a la del archivo anulaba
+   una clasificacion que el nombre del archivo, por si solo, ya resolvia sin
+   ambiguedad. Ejemplo real de la auditoria: "ESPERA/Tome CUMP RES.pdf" ahora
+   se clasifica correctamente como Cumplimiento (por el nombre del archivo),
+   en vez de quedar sin clasificar.
+
+2. (M-04) Los codigos de salida ahora cumplen lo que dice este mismo LEEME:
+   2 para --month o --emission-date con formato invalido (antes daba 1),
+   1 para carpeta inexistente o que no es una carpeta, siempre con un mensaje
+   de una linea en vez de un traceback completo de Python.
+
+3. (M-03) Los tres BAT (generar, generar otro mes, instalar dependencias)
+   usan ahora un unico punto de deteccion de Python (scripts\_entorno.bat):
+   primero "py -3" con verificacion de version 3.10+, luego "python" con la
+   misma verificacion. Antes cada BAT tenia su propio orden y solo uno
+   validaba la version, por lo que un alias de Microsoft Store o un Python
+   antiguo podia terminar seleccionado sin que se notara.
+
+ETAPA 3 - CALIDAD Y MANTENIMIENTO
+----------------------------------
+
+4. (L-01) Un segmento de ruta con un nombre completo de tribunal Y un alias
+   de OTRO tribunal (por ejemplo, un archivo que menciona "Tome" y "CCP" a
+   la vez) ahora se marca ambiguo, igual que si mencionara dos nombres
+   completos. Antes, el nombre completo hacia que el alias se ignorara en
+   silencio.
+
+5. (M-05) Suite de pruebas:
+   - Se agrego requirements-dev.txt (pytest y xlwt, este ultimo solo para
+     generar un .xls de prueba; ninguno de los dos es dependencia del
+     programa).
+   - Se corrigio una prueba parametrizada que en realidad probaba el mismo
+     caso dos veces (el parametro no se usaba); ahora cubre cuatro formatos
+     invalidos distintos y exige el codigo de salida exacto que corresponde.
+   - Se agregaron pruebas para .xlsm, .xls legado, imagenes, un nombre de
+     archivo con codificacion dañada (el tribunal debe salir del contenido
+     del Excel, no del nombre), y el conflicto carpeta/archivo de extremo a
+     extremo.
+
+PENDIENTE
+---------
+
+Revalidar con la muestra real de julio (68/68, 75/43, 12/26/63/17, cero
+problemas de verificacion) y probar los tres BAT en Windows real: ningun
+archivo .bat se ejecuto en un cmd.exe real durante el desarrollo de esta
+version, solo se revisaron por lectura y se simulo su logica de errorlevel.
+
+No incluido en esta version: anonimizar y agregar la muestra de julio como
+prueba automatizada (requiere los datos reales, que no estan disponibles en
+este entorno).

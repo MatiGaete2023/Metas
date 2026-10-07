@@ -1,0 +1,7 @@
+# Fechas extraordinarias que también deben considerarse inhábiles.
+# Formato obligatorio: AAAA-MM-DD
+# Una fecha por línea. Las líneas que comienzan con # se ignoran.
+#
+# Ejemplo:
+# 2027-01-02
+
